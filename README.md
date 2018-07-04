@@ -1,2 +1,5 @@
-# EEL2-vs-code
-EEL2 support for Visual Studio Code
+# Reaper tools for Visual Studio Code
+
+(I'll give this a better writeup at some point)
+
+This project provides various tools and extensions for Visual Studio Code to assist in writing Reaper scripts.
