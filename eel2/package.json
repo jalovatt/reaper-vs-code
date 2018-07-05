@@ -14,7 +14,7 @@
         "languages": [{
             "id": "eel2",
             "aliases": ["EEL2", "eel2"],
-            "extensions": [".eel"],
+            "extensions": [".eel,.jsfx"],
             "configuration": "./language-configuration.json"
         }],
         "grammars": [{
