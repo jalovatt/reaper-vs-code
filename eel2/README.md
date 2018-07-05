@@ -1,6 +1,6 @@
 # EEL2 Language Support
 
-This folder provides an EEL2 language definition for Visual Studio Code. Language definitions are required to associate code snippets with a particular language/file format, and to provide appropriate syntax highlighting.
+This folder provides an EEL2 language definition for Visual Studio Code. Language definitions are required to associate code snippets with a particular language/file format, and (eventually) to provide appropriate syntax highlighting.
 
 ## Installation
 Clone/download this folder's contents to the following path:
