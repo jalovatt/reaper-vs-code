@@ -1,0 +1,26 @@
+{
+    "name": "eel2",
+    "displayName": "EEL2 for Reaper",
+    "description": "Support for the EEL2 language used in Reaper scripts",
+    "version": "0.0.1",
+    "publisher": "n",
+    "engines": {
+        "vscode": "^1.24.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "eel2",
+            "aliases": ["EEL2", "eel2"],
+            "extensions": [".eel"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "eel2",
+            "scopeName": "source.eel",
+            "path": "./syntaxes/eel2.tmLanguage.json"
+        }]
+    }
+}
