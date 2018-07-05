@@ -1,0 +1,94 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "Walter",
+	"patterns": [
+		{
+			"begin": "\\b\\s*(macro|globallayout|layout)\\s+([a-zA-Z_][a-zA-Z0-9_]*)\\s+",
+			"beginCaptures": {
+				"1": {
+					"name": "keyword.control.lua"
+				},
+				"2": {
+					"name": "entity.name.function.lua"
+				}
+			},
+            "end": "(;.*)?$",
+            "endCaptures": {
+                "0": {
+                    "name": "comment"
+                }
+            },
+			"name": "meta.function.lua",
+			"patterns": [
+				{
+					"match": "[a-zA-Z_][a-zA-Z0-9_]*",
+					"name": "variable.parameter.function.lua"
+				}
+			]
+        },
+        {
+            "include": "#comments"
+        },
+        {
+            "include": "#keywords"
+        },
+        {
+            "match": "\\b(tcp|mcp|master|envcp|trans)(\\.[\\.\\w]*)\\b",
+            "name": "support.function.walter"
+        },
+        {
+            "include": "#constants"
+        }
+	],
+	"repository": {
+        "comments": {
+            "patterns": [
+                {
+                    "name": "comment",
+                    "match": "\\s*(;.*)"
+                },
+                {
+                    "name": "comment",
+                    "match": "\\s*(#[<|>].*)"
+                }
+            ]
+        },
+		"keywords": {
+			"patterns": [
+                {
+				    "name": "keyword.control.walter",
+				    "match": "\\b(clear|reset|front|set|def|endmacro|endlayout)\\b"
+                },
+                {
+                    "name": "keyword.control.walter",
+                    "match": "([\\!\\?])"
+                },
+                {
+                    "name": "keyword.operator",
+                    "match": "(\\+|-|%|\\*|\\/|\\^|==?|~=|<=?|>=?)"
+                }
+            ]
+		},
+        "constants": {
+            "patterns": [
+                {
+                    "match": "(?<![\\w\\d.])[0-9A-Fa-f]{6,}(?![pPeE.0-9])",
+                    "name": "constant.numeric.integer.hexadecimal.eel2"
+                },
+                {
+                    "match": "(?<![\\w\\d.])[0-9A-Fa-f]{6,}(\\.[0-9A-Fa-f]+)?([eE]-?\\d*)?([pP][-+]\\d+)?",
+                    "name": "constant.numeric.float.hexadecimal.eel2"
+                },            
+                {
+                    "match": "(?<![\\w\\d.])\\d+(?![pPeE.0-9])",
+                    "name": "constant.numeric.integer.eel2"
+                },
+                {
+                    "match": "(?<![\\w\\d.])\\d+(\\.\\d+)?([eE]-?\\d*)?",
+                    "name": "constant.numeric.float.eel2"
+                }
+            ]
+        }
+	},
+	"scopeName": "source.walter"
+}

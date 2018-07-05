@@ -1,0 +1,26 @@
+{
+    "name": "walter",
+    "displayName": "Walter",
+    "description": "Support for Walter, Reaper's theming language.",
+    "version": "0.0.1",
+    "publisher": "n",
+    "engines": {
+        "vscode": "^1.24.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "walter",
+            "aliases": ["Walter", "walter"],
+            "extensions": ["rtconfig.txt"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "walter",
+            "scopeName": "source.walter",
+            "path": "./syntaxes/walter.tmLanguage.json"
+        }]
+    }
+}
