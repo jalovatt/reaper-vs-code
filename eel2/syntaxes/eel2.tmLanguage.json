@@ -2,19 +2,71 @@
 	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
 	"name": "EEL2",
 	"patterns": [
+        {
+            "name": "comment",
+            "match": "(//.*)"
+        },
+        {
+            "name": "keyword.operator",
+            "match": "(\\+|-|%|#|\\*|\\/|\\^|==?|~=|<=?|>=?|&&|!=|!|\\|\\||;)"
+        },
+		{
+			"begin": "\\b(function)\\s+([a-zA-Z_][a-zA-Z0-9_]*)\\s*(\\()",
+			"beginCaptures": {
+				"1": {
+					"name": "keyword.control.lua"
+				},
+				"2": {
+					"name": "entity.name.function.lua"
+				},
+				"3": {
+					"name": "punctuation.definition.parameters.begin.lua"
+				}
+			},
+			"end": "\\)",
+			"endCaptures": {
+				"0": {
+					"name": "punctuation.definition.parameters.end.lua"
+				}
+			},
+			"name": "meta.function.lua",
+			"patterns": [
+				{
+					"match": "[a-zA-Z_][a-zA-Z0-9_]*",
+					"name": "variable.parameter.function.lua"
+				}
+			]
+		},        
 		{
 			"include": "#keywords"
 		},
 		{
 			"include": "#strings"
-		}
+        },
+        {
+            "include": "#constants"
+        }
 	],
 	"repository": {
 		"keywords": {
-			"patterns": [{
+			"patterns": [
+                {
 				"name": "keyword.control.eel2",
-				"match": "\\b(if|while|for|return)\\b"
-			}]
+                "match": "\\b(loop|while|return)\\b"
+                },
+                {
+                "name": "keyword.control.eel2",
+                "match": "\\?|:"
+                },
+                {
+                "name": "keyword.function.eel2",
+                "match": "\\b(function|end)\\b"
+                },
+                {
+                "name": "keyword.local.eel2",
+                "match": "\\b(local)\\b"
+                }
+            ]
 		},
 		"strings": {
 			"name": "string.quoted.double.eel2",
@@ -26,7 +78,26 @@
 					"match": "\\\\."
 				}
 			]
-		}
-	},
+        },
+        "constants": {
+            "patterns": [
+            {
+                "match": "(?<![\\w\\d.])\\$[xX][0-9A-Fa-f]+(?![pPeE.0-9])",
+                "name": "constant.numeric.integer.hexadecimal.eel2"
+            },
+            {
+                "match": "(?<![\\w\\d.])\\$[xX][0-9A-Fa-f]+(\\.[0-9A-Fa-f]+)?([eE]-?\\d*)?([pP][-+]\\d+)?",
+                "name": "constant.numeric.float.hexadecimal.eel2"
+            },
+            {
+                "match": "(?<![\\w\\d.])\\d+(?![pPeE.0-9])",
+                "name": "constant.numeric.integer.eel2"
+            },
+            {
+                "match": "(?<![\\w\\d.])\\d+(\\.\\d+)?([eE]-?\\d*)?",
+                "name": "constant.numeric.float.eel2"
+            }
+        ]}
+        },
 	"scopeName": "source.eel"
 }
